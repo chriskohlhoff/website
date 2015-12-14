@@ -5,7 +5,7 @@
         New Libraries:
         VMD
         Updated Libraries:
-        Atomic, Chrono, Container, Context, Core, Filesystem, Flyweight,
+        Asio, Atomic, Chrono, Container, Context, Core, Filesystem, Flyweight,
         Fusion, Interprocess, Intrusive, Lexical Cast, Locale, Log,
         Move, Multi-index Containers, odeint, Optional, Predef, Test, Thread,
         UUID.
@@ -32,6 +32,21 @@
 [endsect]
 
 [section Updated Libraries]
+
+* [phrase library..[@/libs/asio/ Asio]:]
+  * Added support for Windows 8.1 Store apps.
+  * Fixed macro multiple definition error on Microsoft Visual Studio 2015
+    ([ticket 11539]).
+  * Changed Asio's SSL wrapper to respect OpenSSL's `OPENSSL_NO_SSL3` feature
+    test `#define` ([ticket 11754]).
+  * Changed Asio's SSL wrapper to use OpenSSL's new `SSL_CTX_clear_chain_certs`
+    function, if available.
+  * Suppressed a clang 3.6+ warning about unused typedefs ([ticket 11767]).
+  * Regenerated certificates used by SSL examples.
+  * Fixed buffer sizes passed to `strncat` in the `getaddrinfo` emulation and in
+    the SSL wrapper's password handling.
+  * Changed Windows backend to use non-macro `CreateEventW` rather than
+    `CreateEvent` ([ticket 11732]).
 
 * [phrase library..[@/libs/atomic/ Atomic]:]
   * Enforced proper alignment of `atomic<>` storage. This should fix possible issues on platforms that support atomic operations on data units larger than the native word size. This may also change binary layout of user's data structures that have `atomic<>` members.
